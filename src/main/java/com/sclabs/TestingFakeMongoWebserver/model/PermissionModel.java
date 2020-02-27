@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Permissions {
+public class PermissionModel {
 
 	/**
 	 * This class holds the schema for collection "Permission" 
@@ -57,7 +57,7 @@ public class Permissions {
 	public void setPermissionValue(String permissionValue) {
 		this.permissionValue = permissionValue;
 	}
-	public Permissions(String productName, String permissionName, String permissionValue) {
+	public PermissionModel(String productName, String permissionName, String permissionValue) {
 		super();
 		this.productName = productName;
 		this.permissionName = permissionName;
