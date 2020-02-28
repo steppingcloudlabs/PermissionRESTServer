@@ -4,15 +4,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.CriteriaDefinition;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.sclabs.TestingFakeMongoWebserver.model.PermissionModel;
 
-public class PermissionDataAccessLayerMongoDbImplementation implements PermissionDataAccessLayer {
+
+public class CustomPermissionRepositoryImpl implements CustomPermissionRepository {
 	
 	private final MongoTemplate mongoTemplate;
 
 	@Autowired
-	public PermissionDataAccessLayerMongoDbImplementation(MongoTemplate mongoTemplate) {
+	public CustomPermissionRepositoryImpl(MongoTemplate mongoTemplate) {
 		// TODO Auto-generated constructor stub
 		this.mongoTemplate = mongoTemplate;
 	}
@@ -20,8 +26,8 @@ public class PermissionDataAccessLayerMongoDbImplementation implements Permissio
 	@Override
 	public PermissionModel getPermission(String PermissionName) {
 		// TODO Auto-generated method stub
-		
-		return null;
+		Query query = new Query().addCriteria(Criteria.where("permissioName").is(PermissionName));
+		return mongoTemplate.findOne(query, PermissionModel.class);
 	}
 
 	@Override
@@ -55,65 +61,66 @@ public class PermissionDataAccessLayerMongoDbImplementation implements Permissio
 	}
 
 	@Override
-	public PermissionModel savePermission(PermissionModel permissionName) {
-		mongoTemplate.save(permissionName);
-		return permissionName;
-
+	public PermissionModel savePermission(PermissionModel permissionModel) {
+		// TODO Auto-generated method stub
+		mongoTemplate.save(permissionModel);
+		return permissionModel;
 	}
-
 
 	@Override
 	public void saveBulkPermission(PermissionModel permissionModel) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void saveBulkPermissionByProductName(List<PermissionModel> permissionModel, String ServiceName) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void updatePermission(PermissionModel permissionModel) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void updatePermissionByProductName(PermissionModel permissionModel) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void updateBulkPermission(List<PermissionModel> permissionModels) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void updateBulkPermissionByProductName(List<PermissionModel> permissionModels, String ServiceName) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void deleteAll() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void deletePermissionByProductName(PermissionModel permissionModel, String ServiceName) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void deleteBulkPermissionByProductName(List<PermissionModel> permissionModels, String ServiceName) {
 		// TODO Auto-generated method stub
-
+		
 	}
+
+	
 
 }

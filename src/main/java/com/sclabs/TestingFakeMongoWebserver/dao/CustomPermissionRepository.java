@@ -1,10 +1,11 @@
 package com.sclabs.TestingFakeMongoWebserver.dao;
 
 import java.util.List;
+
 import com.sclabs.TestingFakeMongoWebserver.model.PermissionModel;
 
-public interface PermissionDataAccessLayer {
-
+public interface CustomPermissionRepository {
+	
 //	READ OPERATIONS
 
 	PermissionModel getPermission(String PermissionName);
@@ -42,4 +43,5 @@ public interface PermissionDataAccessLayer {
 	void deletePermissionByProductName(PermissionModel permissionModel, String ServiceName);
 
 	void deleteBulkPermissionByProductName(List<PermissionModel> permissionModels, String ServiceName);
+
 }

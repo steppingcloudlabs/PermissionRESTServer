@@ -4,6 +4,7 @@
 package com.sclabs.TestingFakeMongoWebserver.model;
 
 import org.bson.types.ObjectId;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,7 +20,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class PermissionModel {
 
 	/**
@@ -31,6 +31,7 @@ public class PermissionModel {
 	@Id
 	ObjectId id;
 	String productName;
+	@UniqueElements
 	String permissionName;
 	String permissionValue;
 	public ObjectId getId() {
@@ -63,9 +64,12 @@ public class PermissionModel {
 		this.permissionName = permissionName;
 		this.permissionValue = permissionValue;
 	}
+	public PermissionModel() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
-		return "Permissions [id=" + id + ", productName=" + productName + ", permissionName=" + permissionName
+		return "Permissions [id=" + id.toString() + ", productName=" + productName + ", permissionName=" + permissionName
 				+ ", permissionValue=" + permissionValue + "]";
 	}
 	
