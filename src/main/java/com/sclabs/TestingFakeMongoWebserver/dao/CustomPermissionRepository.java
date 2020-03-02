@@ -17,6 +17,13 @@ public interface CustomPermissionRepository {
 	PermissionModel getAllPermissionByProductName(String ServiceName);
 
 	// Pagination in READ OPERATIONS
+	/**
+	 * This need to be added in the getAllPermission API Call
+	 * 
+	 * @param PageNumber
+	 * @param PageSize
+	 * @return
+	 */
 	PermissionModel getAllPermissionByPage(int PageNumber, int PageSize);
 
 	PermissionModel getAllPermissionByProductNameByPage(String ServiceName, int PageNumber, int PageSize);
@@ -24,12 +31,12 @@ public interface CustomPermissionRepository {
 	// WRITE OPERATION
 	PermissionModel savePermission(PermissionModel permissionModel);
 
-	void saveBulkPermission(PermissionModel permissionModel);
+	PermissionModel saveBulkPermission(PermissionModel permissionModel);
 
 	void saveBulkPermissionByProductName(List<PermissionModel> permissionModel, String ServiceName);
 
 	// UPDATE OPERATION
-	void updatePermission(PermissionModel permissionModel);
+	PermissionModel updatePermission(PermissionModel permissionModel);
 
 	void updatePermissionByProductName(PermissionModel permissionModel);
 

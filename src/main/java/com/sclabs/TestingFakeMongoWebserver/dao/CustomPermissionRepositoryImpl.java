@@ -69,8 +69,10 @@ public class CustomPermissionRepositoryImpl implements CustomPermissionRepositor
 	}
 
 	@Override
-	public void saveBulkPermission(PermissionModel permissionModel) {
+	public PermissionModel saveBulkPermission(PermissionModel permissionModel) {
 		// TODO Auto-generated method stub
+		mongoTemplate.save(permissionModel);
+		return permissionModel;
 
 	}
 

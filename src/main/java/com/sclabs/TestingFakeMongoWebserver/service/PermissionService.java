@@ -30,4 +30,12 @@ public class PermissionService {
 		return permissionRepository.getAllPermission();
 	}
 
+	public PermissionModel savebulkPermission(PermissionModel permission) {
+		return permissionRepository.saveBulkPermission(permission);
+	}
+
+	public PermissionModel updatePermission(PermissionModel permission) {
+		return permissionRepository.updatePermission(permission);
+	}
+
 }
