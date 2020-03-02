@@ -3,6 +3,7 @@ package com.sclabs.TestingFakeMongoWebserver.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,25 +37,21 @@ public class PermissionControllerRoutes {
 	public PermissionModel getPermissionByProductName(@RequestParam String permission,
 			@RequestParam String servicename) {
 		return permissionService.getPermissionByProductName(permission, servicename);
-
 	}
 
 	@GetMapping(path = "/getallpermission", produces = "application/json")
 	public List<PermissionModel> getAllPermission() {
 		return permissionService.getAllPermission();
-
 	}
 
 	@PostMapping(path = "/savebulkpermission", produces = "application/json")
 	public PermissionModel savebulkPermission(@RequestBody PermissionModel permissionbulk) {
 		return permissionService.savebulkPermission(permissionbulk);
-
 	}
 
-	@PutMapping(path = "/updatepermission", produces = "application/json")
-	public PermissionModel updatePermission(@RequestBody PermissionModel permissionbulk) {
-		return permissionService.updatePermission(permissionbulk);
-
+	@PutMapping(path = "/updateByName", produces = "application/json")
+	public PermissionModel updatePermissionByName(@RequestBody PermissionModel permission) {
+		return permissionService.updatePermissionByName(permission);
 	}
 
 }

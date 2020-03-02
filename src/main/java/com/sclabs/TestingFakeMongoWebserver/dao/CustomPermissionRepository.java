@@ -36,7 +36,7 @@ public interface CustomPermissionRepository {
 	void saveBulkPermissionByProductName(List<PermissionModel> permissionModel, String ServiceName);
 
 	// UPDATE OPERATION
-	PermissionModel updatePermission(PermissionModel permissionModel);
+	PermissionModel updatePermissionByName(PermissionModel permissionModel);
 
 	void updatePermissionByProductName(PermissionModel permissionModel);
 

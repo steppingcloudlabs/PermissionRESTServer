@@ -83,9 +83,18 @@ public class CustomPermissionRepositoryImpl implements CustomPermissionRepositor
 	}
 
 	@Override
-	public PermissionModel updatePermission(PermissionModel permissionModel) {
-
-		return permissionModel;
+	public PermissionModel updatePermissionByName(PermissionModel permissionModel) {
+		
+		String productName=permissionModel.getProductName();
+		String permissionName=permissionModel.getPermissionName();
+		String permissionValue=permissionModel.getPermissionValue();
+		
+		Query query = new Query().addCriteria(new Criteria().andOperator(
+				Criteria.where("productName").is(productName), Criteria.where("permissionValue").is(permissionValue)));
+		
+		PermissionModel obj=mongoTemplate.findOne(query, PermissionModel.class);
+        obj.setPermissionName(permissionName);
+		return obj;
 		// TODO Auto-generated method stub
 
 	}
