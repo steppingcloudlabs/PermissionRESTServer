@@ -5,30 +5,30 @@ import java.util.List;
 import com.sclabs.TestingFakeMongoWebserver.model.PermissionModel;
 
 public interface CustomPermissionRepository {
-	
-//	READ OPERATIONS
+
+	// READ OPERATIONS
 
 	PermissionModel getPermission(String PermissionName);
 
-	PermissionModel getPermissionByProductName(String ermissionName, String ServiceName);
+	PermissionModel getPermissionByProductName(String permissionName, String ServiceName);
 
-	PermissionModel getAllPermission();
+	List<PermissionModel> getAllPermission();
 
 	PermissionModel getAllPermissionByProductName(String ServiceName);
 
-//	Pagination in READ OPERATIONS
+	// Pagination in READ OPERATIONS
 	PermissionModel getAllPermissionByPage(int PageNumber, int PageSize);
 
 	PermissionModel getAllPermissionByProductNameByPage(String ServiceName, int PageNumber, int PageSize);
 
-//	WRITE OPERATION
+	// WRITE OPERATION
 	PermissionModel savePermission(PermissionModel permissionModel);
 
 	void saveBulkPermission(PermissionModel permissionModel);
 
 	void saveBulkPermissionByProductName(List<PermissionModel> permissionModel, String ServiceName);
 
-//	UPDATE OPERATION
+	// UPDATE OPERATION
 	void updatePermission(PermissionModel permissionModel);
 
 	void updatePermissionByProductName(PermissionModel permissionModel);
@@ -37,7 +37,7 @@ public interface CustomPermissionRepository {
 
 	void updateBulkPermissionByProductName(List<PermissionModel> permissionModels, String ServiceName);
 
-//	DELETE OPERATION
+	// DELETE OPERATION
 	void deleteAll();
 
 	void deletePermissionByProductName(PermissionModel permissionModel, String ServiceName);
