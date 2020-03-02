@@ -83,7 +83,9 @@ public class CustomPermissionRepositoryImpl implements CustomPermissionRepositor
 	}
 
 	@Override
-	public void updatePermission(PermissionModel permissionModel) {
+	public PermissionModel updatePermission(PermissionModel permissionModel) {
+
+		return permissionModel;
 		// TODO Auto-generated method stub
 
 	}
