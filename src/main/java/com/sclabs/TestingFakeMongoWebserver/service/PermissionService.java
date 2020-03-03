@@ -34,8 +34,23 @@ public class PermissionService {
 		return permissionRepository.saveBulkPermission(permission);
 	}
 
-	public PermissionModel updatePermission(PermissionModel permission) {
-		return permissionRepository.updatePermission(permission);
+	public PermissionModel updatePermissionByName(PermissionModel permission) {
+		return permissionRepository.updatePermissionByName(permission);
+	}
+
+	public PermissionModel updatePermissionByValue(PermissionModel permission) {
+		return permissionRepository.updatePermissionByValue(permission);
+	}
+	public PermissionModel updatePermissionByProductName(PermissionModel permission) {
+		return permissionRepository.updatePermissionByProductName(permission);
+	}
+
+	public void deleteAll() {
+		permissionRepository.deleteAll();
+	}
+
+	public void deletePermissionByProductName(PermissionModel permissionModel) {
+		permissionRepository.deletePermissionByProductName(permissionModel);
 	}
 
 }
