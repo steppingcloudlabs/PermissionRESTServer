@@ -54,4 +54,9 @@ public class PermissionControllerRoutes {
 		return permissionService.updatePermissionByName(permission);
 	}
 
+	@PutMapping(path = "/updateByValue", produces = "application/json")
+	public PermissionModel updatePermissionByValue(@RequestBody PermissionModel permission) {
+		return permissionService.updatePermissionByValue(permission);
+	}
+
 }

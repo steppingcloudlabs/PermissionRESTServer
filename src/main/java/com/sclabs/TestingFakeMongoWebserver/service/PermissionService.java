@@ -38,4 +38,8 @@ public class PermissionService {
 		return permissionRepository.updatePermissionByName(permission);
 	}
 
+	public PermissionModel updatePermissionByValue(PermissionModel permission) {
+		return permissionRepository.updatePermissionByValue(permission);
+	}
+
 }

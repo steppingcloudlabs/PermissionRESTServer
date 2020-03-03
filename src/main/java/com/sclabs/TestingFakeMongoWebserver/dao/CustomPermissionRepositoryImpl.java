@@ -93,7 +93,26 @@ public class CustomPermissionRepositoryImpl implements CustomPermissionRepositor
 				Criteria.where("productName").is(productName), Criteria.where("permissionValue").is(permissionValue)));
 		
 		PermissionModel obj=mongoTemplate.findOne(query, PermissionModel.class);
-        obj.setPermissionName(permissionName);
+		obj.setPermissionName(permissionName);
+		mongoTemplate.save(obj);
+		return obj;
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public PermissionModel updatePermissionByValue(PermissionModel permissionModel) {
+		
+		String productName=permissionModel.getProductName();
+		String permissionName=permissionModel.getPermissionName();
+		String permissionValue=permissionModel.getPermissionValue();
+		
+		Query query = new Query().addCriteria(new Criteria().andOperator(
+				Criteria.where("productName").is(productName), Criteria.where("permissionName").is(permissionName)));
+		
+		PermissionModel obj=mongoTemplate.findOne(query, PermissionModel.class);
+		obj.setPermissionValue(permissionValue);
+		mongoTemplate.save(obj);
 		return obj;
 		// TODO Auto-generated method stub
 

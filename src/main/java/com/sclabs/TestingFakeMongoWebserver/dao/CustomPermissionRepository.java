@@ -38,6 +38,9 @@ public interface CustomPermissionRepository {
 	// UPDATE OPERATION
 	PermissionModel updatePermissionByName(PermissionModel permissionModel);
 
+	// UPDATE OPERATION
+	PermissionModel updatePermissionByValue(PermissionModel permissionModel);
+
 	void updatePermissionByProductName(PermissionModel permissionModel);
 
 	void updateBulkPermission(List<PermissionModel> permissionModels);
