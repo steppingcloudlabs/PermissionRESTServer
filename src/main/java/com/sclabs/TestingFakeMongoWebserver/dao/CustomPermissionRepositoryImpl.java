@@ -163,7 +163,6 @@ public class CustomPermissionRepositoryImpl implements CustomPermissionRepositor
 	public void deletePermissionByProductName(PermissionModel permissionModel) {
 		// TODO Auto-generated method stub
 		String productName=permissionModel.getProductName();
-		System.out.println(productName);
 		Query query = new Query().addCriteria(Criteria.where("productName").is(productName));
 		mongoTemplate.remove(query, PermissionModel.class);
 
