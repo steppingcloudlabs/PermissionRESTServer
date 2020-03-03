@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.mongodb.client.MongoCollection;
 import com.sclabs.TestingFakeMongoWebserver.model.PermissionModel;
 
 public class CustomPermissionRepositoryImpl implements CustomPermissionRepository {
@@ -119,8 +120,19 @@ public class CustomPermissionRepositoryImpl implements CustomPermissionRepositor
 	}
 
 	@Override
-	public void updatePermissionByProductName(PermissionModel permissionModel) {
+	public PermissionModel updatePermissionByProductName(PermissionModel permissionModel) {
 		// TODO Auto-generated method stub
+		String productName=permissionModel.getProductName();
+		String permissionName=permissionModel.getPermissionName();
+		String permissionValue=permissionModel.getPermissionValue();
+		
+		Query query = new Query().addCriteria(new Criteria().andOperator(
+				Criteria.where("permissionValue").is(permissionValue), Criteria.where("permissionName").is(permissionName)));
+		
+		PermissionModel obj=mongoTemplate.findOne(query, PermissionModel.class);
+		obj.setProductName(productName);
+		mongoTemplate.save(obj);
+		return obj;
 
 	}
 
@@ -139,12 +151,21 @@ public class CustomPermissionRepositoryImpl implements CustomPermissionRepositor
 	@Override
 	public void deleteAll() {
 		// TODO Auto-generated method stub
-
+		//MongoClient mongoClient = new MongoClient(new ServerAddress("localhost", 27017));
+    	//MongoDatabase db = mongoClient.getDatabase("test");
+    	//MongoCollection collection = db.getCollection("test_collection");
+		//collection.drop()
+		Query query = new Query();
+		mongoTemplate.findAllAndRemove(query, PermissionModel.class);
 	}
 
 	@Override
-	public void deletePermissionByProductName(PermissionModel permissionModel, String ServiceName) {
+	public void deletePermissionByProductName(PermissionModel permissionModel) {
 		// TODO Auto-generated method stub
+		String productName=permissionModel.getProductName();
+		System.out.println(productName);
+		Query query = new Query().addCriteria(Criteria.where("productName").is(productName));
+		mongoTemplate.remove(query, PermissionModel.class);
 
 	}
 

@@ -41,7 +41,7 @@ public interface CustomPermissionRepository {
 	// UPDATE OPERATION
 	PermissionModel updatePermissionByValue(PermissionModel permissionModel);
 
-	void updatePermissionByProductName(PermissionModel permissionModel);
+	PermissionModel updatePermissionByProductName(PermissionModel permissionModel);
 
 	void updateBulkPermission(List<PermissionModel> permissionModels);
 
@@ -50,7 +50,7 @@ public interface CustomPermissionRepository {
 	// DELETE OPERATION
 	void deleteAll();
 
-	void deletePermissionByProductName(PermissionModel permissionModel, String ServiceName);
+	void deletePermissionByProductName(PermissionModel permissionModel);
 
 	void deleteBulkPermissionByProductName(List<PermissionModel> permissionModels, String ServiceName);
 

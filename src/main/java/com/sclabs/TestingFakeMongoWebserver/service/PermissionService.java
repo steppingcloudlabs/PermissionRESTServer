@@ -41,5 +41,16 @@ public class PermissionService {
 	public PermissionModel updatePermissionByValue(PermissionModel permission) {
 		return permissionRepository.updatePermissionByValue(permission);
 	}
+	public PermissionModel updatePermissionByProductName(PermissionModel permission) {
+		return permissionRepository.updatePermissionByProductName(permission);
+	}
+
+	public void deleteAll() {
+		permissionRepository.deleteAll();
+	}
+
+	public void deletePermissionByProductName(PermissionModel permissionModel) {
+		permissionRepository.deletePermissionByProductName(permissionModel);
+	}
 
 }
